@@ -86,26 +86,32 @@ public class OrderServiceImpl implements OrderService {
 
 
         log.info("OrderServiceImpl | getOrderDetails | Invoking Product service to fetch the product for id: {}", order.getProductId());
-        /*ProductResponse productResponse
+        ProductResponse productResponse
                 = restTemplate.getForObject(
                 "http://PRODUCT-SERVICE/product/" + order.getProductId(),
-                ProductResponse.class*/
+                ProductResponse.class
 
 
-                ProductResponse productResponse
+                /*ProductResponse productResponse
                         = restTemplate.getForObject(
                         "http://localhost:9001/product/" + order.getProductId(),
-                        ProductResponse.class
+                        ProductResponse.class*/
+
         );
-
-
 
         log.info("OrderServiceImpl | getOrderDetails | Getting payment information form the payment Service");
         PaymentResponse paymentResponse
                 = restTemplate.getForObject(
-                "http://localhost:9002/payment/order/" + order.getId(),
+                "http://PAYMENT-SERVICE/payment/order/" + order.getId(),
                 PaymentResponse.class
         );
+
+       /* log.info("OrderServiceImpl | getOrderDetails | Getting payment information form the payment Service");
+        PaymentResponse paymentResponse
+                = restTemplate.getForObject(
+                "http://localhost:9002/payment/order/" + order.getId(),
+                PaymentResponse.class
+        );*/
 
 
         //assert productResponse != null;
